@@ -1,8 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product-detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{product.title}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onAddFavorites()">
+        <ion-icon name="heart-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
 
