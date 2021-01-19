@@ -13,7 +13,7 @@
 
 <ion-list>
   <div *ngFor="let data of loadedProducts | filter:filterTerm">
-    <ion-item *ngIf="data.isFav == true">
+    <ion-item *ngIf="data.isFav == true" detail>
       <ion-thumbnail>
         <img [src]="data.imageUrl">
 
