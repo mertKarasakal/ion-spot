@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/auth/auth.guard';
 
 import { TabsPagePage } from './tabs-page.page';
 
@@ -29,7 +30,8 @@ const routes: Routes = [
       },
       {
         path: 'add',
-        loadChildren: () => import('../products/product-add/product-add.module').then( m => m.ProductAddPageModule)
+        loadChildren: () => import('../products/product-add/product-add.module').then( m => m.ProductAddPageModule),
+        canLoad: [AuthGuard]
       },
       {
         path: 'search',
@@ -37,14 +39,16 @@ const routes: Routes = [
       },
       {
         path: 'favorites',
-        loadChildren: () => import('../products/product-favorites/product-favorites.module').then( m => m.ProductFavoritesPageModule)
+        loadChildren: () => import('../products/product-favorites/product-favorites.module').then( m => m.ProductFavoritesPageModule),
+        canLoad: [AuthGuard]
       },
       {
         path: 'user',
         children: [
           {
             path: '',
-            loadChildren: () => import('../user/user.module').then( m => m.UserPageModule)
+            loadChildren: () => import('../user/user.module').then( m => m.UserPageModule),
+            canLoad: [AuthGuard]
           }
         ]
       }

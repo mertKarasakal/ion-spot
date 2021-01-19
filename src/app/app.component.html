@@ -20,7 +20,7 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list *ngIf="loggedIn" lines="none">
+        <ion-list lines="none">
           <ion-list-header>
             Kullanıcı
           </ion-list-header>
@@ -29,56 +29,20 @@
             <ion-item (click)="onLogout()" routerDirection="root" detail="false">
               <ion-icon slot="start" name="exit"></ion-icon>
               <ion-label>
-                -LOGOUT-
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                Hesap
+                Çıkış Yap
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
 
 
 
-          <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="logout()" detail="false">
-              <ion-icon slot="start" name="log-out"></ion-icon>
-              <ion-label>
-                Çıkış yap
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+
 
           
 
         </ion-list>
 
-        <ion-list *ngIf="!loggedIn" lines="none">
-          <ion-list-header>
-            Kullanıcı
-          </ion-list-header>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/auth" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="log-in"></ion-icon>
-              <ion-label>
-                Giriş yap
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          
-
-          
-
-        
-        </ion-list>
+    
 
        
       </ion-content>
