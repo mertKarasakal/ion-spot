@@ -29,16 +29,16 @@ Uygulamanın ekran görüntüleri
 ![login](/resources/screenshots/login.png)
 
 ### Anasayfa ve Detaylar Sayfası
-![homepage](/resources/screenshots/homepage.jpg)
+![homepage](/resources/screenshots/homepage.png)
 
 ### Arama Sayfası
-![search](/resources/screenshots/search.jpg)
+![search](/resources/screenshots/search.png)
 
 ### Favoriler Sayfası
-![favorites](/resources/screenshots/favorites.jpg)
+![favorites](/resources/screenshots/favorites.png)
 
 ### Menü ve Yeni İlan Sayfası
-![menu](/resources/screenshots/menu.jpg)
+![menu](/resources/screenshots/menu.png)
 
 
 
