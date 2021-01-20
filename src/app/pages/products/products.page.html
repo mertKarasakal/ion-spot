@@ -28,7 +28,7 @@
               <ion-card-title> {{ product.title}}</ion-card-title>
 
             </ion-card-header> -->
-            <ion-img [src]="product.imageUrl"></ion-img>
+            <ion-img [src]="product.imageUrl" [routerLink] = "['/', 'app', 'pages', 'products', product.id]"></ion-img>
            
               <!-- <p> {{ product.description }}</p> -->
               <!-- <ion-card-subtitle> {{ product.price | currency }}</ion-card-subtitle> -->
@@ -54,7 +54,7 @@
             <ion-card-title> {{ product.title}}</ion-card-title>
 
           </ion-card-header> -->
-          <ion-img [src]="product.imageUrl"></ion-img>
+          <ion-img [src]="product.imageUrl" [routerLink] = "['/', 'app', 'pages', 'products', product.id]"></ion-img>
         
             <!-- <p> {{ product.description }}</p> -->
             <!-- <ion-card-subtitle> {{ product.price | currency }}</ion-card-subtitle> -->
@@ -75,5 +75,8 @@
       </ion-col>
       </ion-row>
 
+
+
   </ion-grid>
+  
 </ion-content>

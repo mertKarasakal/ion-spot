@@ -14,7 +14,16 @@
 
 
 <ion-content>
-  <h1>{{product.title}}</h1>
-  <ion-img [src]="product.imageUrl"></ion-img>
-  <p>{{product.description}}</p>
+  
+
+  <ion-card>
+    <ion-img [src]="product.imageUrl"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{product.price | currency}}</ion-card-subtitle>
+      <ion-card-title>{{product.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{product.description}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

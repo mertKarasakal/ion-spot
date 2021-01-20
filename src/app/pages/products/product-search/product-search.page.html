@@ -9,16 +9,25 @@
 
 <ion-content [fullscreen]="true">
   <ion-searchbar placeholder="Ara..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+ 
+<ion-list>
+    <ion-list-header>
+      Filtrelenen Ürünler
+    </ion-list-header>
 
-  <ion-list>
-    <ion-item *ngFor="let data of loadedProducts | filter:filterTerm" detail>
-      <ion-thumbnail>
+    <ion-item  *ngFor="let data of loadedProducts | filter:filterTerm" detail [routerLink] = "['/', 'app', 'pages', 'products', data.id]">
+      <ion-thumbnail slot="start">
         <img [src]="data.imageUrl">
-
       </ion-thumbnail>
-      <ion-label>{{data.price}}</ion-label>
-      <ion-label>{{data.title}}</ion-label>
+      <ion-label>
+        <h2>{{data.title}}</h2>
+        <h3>{{data.price}}</h3>
+        <p>{{data.description}}</p>
+      </ion-label>
     </ion-item>
+
+  
   </ion-list>
+
 </ion-content>
 

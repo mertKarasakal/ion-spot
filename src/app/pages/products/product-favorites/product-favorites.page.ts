@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonItemSliding } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
 
@@ -9,15 +10,24 @@ import { ProductsService } from '../products.service';
   templateUrl: './product-favorites.page.html',
   styleUrls: ['./product-favorites.page.scss'],
 })
-export class ProductFavoritesPage implements OnInit {
+export class ProductFavoritesPage implements OnInit, OnDestroy {
   filterTerm: string;
   loadedProducts: Product[];
+  private productsSub: Subscription;
 
   constructor(private productsService: ProductsService, private router: Router) { }
 
 
   ngOnInit() {
-    this.loadedProducts = this.productsService.products;
+    this.productsSub = this.productsService.products.subscribe(products => {
+      this.loadedProducts = products;
+    });
+  }
+
+  ngOnDestroy(){
+    if(this.productsSub){
+      this.productsSub.unsubscribe();
+    }
   }
 
     onDelete(id: number, slidingItem: IonItemSliding){

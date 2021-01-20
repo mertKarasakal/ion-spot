@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
 
@@ -9,8 +10,9 @@ import { ProductsService } from '../products.service';
   templateUrl: './product-detail.page.html',
   styleUrls: ['./product-detail.page.scss'],
 })
-export class ProductDetailPage implements OnInit {
+export class ProductDetailPage implements OnInit, OnDestroy {
   product: Product;
+  private productSub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +27,17 @@ export class ProductDetailPage implements OnInit {
       this.navCtrl.navigateBack('../product-list');
       return;
     }
-    this.product = this.productsService.getProduct(+paramMap.get('productId'));
+    this.productSub = this.productsService.getProduct(+paramMap.get('productId'))
+    .subscribe( product => {
+      this.product = product;
+    });
   })
+  }
+
+  ngOnDestroy(){
+    if(this.productSub){
+      this.productSub.unsubscribe();
+    }
   }
 
   onAddFavorites(){}
