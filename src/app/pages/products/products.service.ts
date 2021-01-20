@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Product } from './product.model';
@@ -51,15 +52,15 @@ export class ProductsService {
       'https://productimages.hepsiburada.net/s/20/550/9900233031730.jpg/format:webp',
        713.55,
        false
-    ),
+    )
   ];
   get products(){
     return [...this._products];
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getProduct(id: string){
+  getProduct(id: number){
     return {...this._products.find(p=>p.id === id)};
   }
 }

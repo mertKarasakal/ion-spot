@@ -13,6 +13,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   loggedIn = false;
+  dark = false;
 
   appPages = [
     {
@@ -50,6 +51,18 @@ export class AppComponent {
     private router: Router
   ) {
     this.initializeApp();
+
+    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
+    this.dark = prefersColor.matches;
+    this.updateDarkMode();
+
+    prefersColor.addEventListener(
+      'change',
+      mediaQuery => {
+        this.dark = mediaQuery.matches;
+        this.updateDarkMode();
+      }
+    );
   }
 
   initializeApp() {
@@ -67,4 +80,12 @@ export class AppComponent {
     //   return this.router.navigateByUrl('/app/tabs/schedule');
     // });
   }
+
+
+  
+  updateDarkMode() {
+    document.body.classList.toggle('dark', this.dark);
+  }
+
+
 }

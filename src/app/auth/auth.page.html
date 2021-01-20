@@ -1,11 +1,79 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Authentication</ion-title>
+    <ion-title >
+      <ion-img  style="height:40px" src="../../assets/icon/spot.png"></ion-img>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button color="primary" (click)="onLogin()">
-    Login
-  </ion-button>
+<ion-content class="ion-padding">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input 
+                type="email" 
+                ngModel 
+                name="email" 
+                required
+                email
+                #emailCtrl="ngModel"
+              ></ion-input>
+             
+            </ion-item>
+            <ion-item 
+            lines="none"
+            *ngIf="!emailCtrl.valid && emailCtrl.touched">
+              <ion-label>Geçerli bir email giriniz.</ion-label >
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Şifre</ion-label>
+              <ion-input 
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                #passwordCtrl = "ngModel"
+                ></ion-input>
+                </ion-item>
+                <ion-item 
+                lines="none"
+                *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+                  <ion-label>Şifre en az 6 karakterden oluşmalıdır.</ion-label >
+                </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-button 
+            type="button" 
+            color="success" 
+            fill="clear" 
+            expand="block"
+            (click)="onSwitchAuthMode()"
+            >
+            {{ isLogin ? 'Yeni Hesap Oluştur': 'Zaten hesabınız var mı?' }}
+        </ion-button>
+          <ion-button 
+            type="submit" 
+            color="success" 
+            expand="block" 
+            (click)="onLogin()"
+            [disabled]="!f.valid"
+            >
+            {{ isLogin ? 'Giriş Yap' : ' Kayıt Ol'}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+ 
+
+ 
+  
 </ion-content>

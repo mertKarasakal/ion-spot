@@ -19,12 +19,13 @@ export class ProductDetailPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    // let id: number = +this.route.snapshot.paramMap.get('productId');
     this.route.paramMap.subscribe(paramMap => {
     if(!paramMap.has('productId')){
       this.navCtrl.navigateBack('../product-list');
       return;
     }
-    this.product = this.productsService.getProduct(paramMap.get('productId'));
+    this.product = this.productsService.getProduct(+paramMap.get('productId'));
   })
   }
 

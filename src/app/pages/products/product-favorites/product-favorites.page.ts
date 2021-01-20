@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonItemSliding } from '@ionic/angular';
 import { Product } from '../product.model';
 import { ProductsService } from '../products.service';
 
@@ -11,12 +13,16 @@ export class ProductFavoritesPage implements OnInit {
   filterTerm: string;
   loadedProducts: Product[];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private router: Router) { }
+
+
   ngOnInit() {
     this.loadedProducts = this.productsService.products;
   }
 
-    onDeleteFavorite(){
-
+    onDelete(id: number, slidingItem: IonItemSliding){
+      slidingItem.close();
+      this.router.navigate(['/', 'app', 'pages', 'products', 'delete', id]);
+      console.log('deleted item',id);
     }
 }
